@@ -198,7 +198,7 @@ Try these experiments:
 
 ### LangChain
 - [LangChain Docs](https://docs.langchain.com/)
-- [RAG Tutorial](https://docs.langchain.com/docs/use-cases/question-answering)
+- [RAG Tutorial](https://js.langchain.com/docs/tutorials/rag/)
 
 ### Vector Databases
 - [Qdrant Documentation](https://qdrant.tech/documentation/)
