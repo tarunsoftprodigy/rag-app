@@ -1,4 +1,4 @@
-# RAG Chat System - Learning Guide
+# RAG Chat System
 
 ## What is this project?
 
