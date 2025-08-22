@@ -42,31 +42,6 @@ Instead of AI making up answers, it uses YOUR document content to answer questio
 - **OpenAI Embeddings** - Converts text to numerical vectors
 - **Vector Similarity Search** - Finds relevant document chunks
 
-## Project Structure
-
-```
-├── app/
-│   └── page.tsx                    # Main page (Server Component)
-├── components/
-│   ├── ChatPageWrapper.tsx         # State management (Client Component)
-│   ├── documentUploader/
-│   │   └── index.tsx              # PDF upload component
-│   └── chat/
-│       └── index.tsx              # Chat interface
-├── lib/
-│   ├── utils/
-│   │   └── chat.ts                # Shared utilities & configurations
-│   ├── actions/                   # Server Actions (backend logic)
-│   │   ├── document.ts            # Document upload & processing
-│   │   ├── chatSession.ts         # Chat session management
-│   │   ├── chatMessage.ts         # Message sending & AI responses
-│   │   └── documentRetrieval.ts   # Document search utilities
-│   ├── models/                    # Database schemas
-│   │   ├── Document.ts            # Document metadata
-│   │   └── ChatSession.ts         # Chat conversations
-│   └── mongodb.ts                 # Database connection
-```
-
 ## How it Works - Step by Step
 
 ### 1. Document Upload Flow
@@ -145,7 +120,7 @@ QDRANT_API_KEY=your-qdrant-key
 
 ### 1. Start with the Data Flow
 
-**Look at `lib/actions/document.ts`** first:
+**Look at `app/actions/document.ts`** first:
 ```javascript
 // This is where PDFs become searchable data
 uploadDocument() // Handles the entire pipeline
@@ -164,7 +139,7 @@ export async function sendMessage(sessionId, message) {
 
 ### 3. Study the RAG Chain
 
-In `lib/actions/chatMessage.ts`:
+In `app/actions/chatMessage.ts`:
 ```javascript
 const ragChain = RunnableSequence.from([
   {
@@ -192,9 +167,9 @@ State flows down via props, events flow up via callbacks.
 
 1. **`app/page.tsx`** - Entry point, understand server components
 2. **`components/ChatPageWrapper.tsx`** - State management pattern
-3. **`lib/models/`** - Database schemas, understand data structure
-4. **`lib/actions/document.ts`** - PDF processing pipeline
-5. **`lib/actions/chatMessage.ts`** - RAG implementation
+3. **`app/db/`** - Database schemas, understand data structure
+4. **`app/actions/document.ts`** - PDF processing pipeline
+5. **`app/actions/chatMessage.ts`** - RAG implementation
 6. **`lib/utils/chat.ts`** - Shared configurations
 7. **Components** - UI layer understanding
 
